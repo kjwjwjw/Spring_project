@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.spring_project.mapper.ProductMapper">
+		
+		<select id="selectMaxNum" resultType="java.lang.Integer">
+			SELECT MAX(sell_num) FROM sell
+		</select>
+		<insert id="insertArticle">
+		INSERT INTO sell
+		VALUES (#{sell_num}, #{sell_member_code}, #{sell_title}, #{sell_category}, #{sell_category_detail},
+				#{sell_content}, #{sell_price}, #{sell_color}, ,#{sell_size}, #{sell_brand}, #{sell_write_date}, #{sell_readcount},#{sell_likecount})
+		
+		</insert>
+</mapper>
