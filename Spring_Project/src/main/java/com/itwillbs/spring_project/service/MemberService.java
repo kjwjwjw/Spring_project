@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.spring_project.mapper.MemberMapper;
+import com.itwillbs.spring_project.vo.MemberVO;
 
 
 
@@ -21,6 +22,11 @@ public class MemberService {
 
 	public Map<String, String> isLogin(String id, String passwd) {
 		return mapper.isLogin(id, passwd);
+	}
+
+	public int joinMember(MemberVO memberVO) {
+	
+		return mapper.insertMember(memberVO);
 	}
 	
 }

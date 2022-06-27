@@ -40,6 +40,8 @@ public class MemberVO {
 	private int suspension;
 	private int withdrawal;
 	
+	
+	
 	public MemberVO(String grade_name, int lowest_acc_money, int highest_acc_money, int discount_rate,
 			String reason_num, String reason_content, String member_num, String member_code, String member_nickname,
 			String member_id, String member_passwd, String member_email, String member_info_name,
@@ -92,7 +94,14 @@ public class MemberVO {
 		this.withdrawal = withdrawal;
 	}
 	
-	
+
+
+
+	public MemberVO() {}
+
+
+
+
 	public String getGrade_name() {
 		return grade_name;
 	}
