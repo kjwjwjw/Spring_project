@@ -1,5 +1,5 @@
 #board-list {
-	 overflow-x:auto;
+		 overflow-x:auto;
 }
 
 table {
@@ -61,7 +61,7 @@ section.notice {
 
 .board-table {
 	font-size: 13px;
-	width: 1200px;
+	width: 100%;
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 }
@@ -83,12 +83,12 @@ section.notice {
 }
 
 .board-table .th-num {
-	width: 80px;
+	width: 50px;
 	text-align: center;
 }
 
 th.th-title {
-	width: 300px;
+	width: 500px;
 }
 
 th {
@@ -96,7 +96,7 @@ th {
 }
 
 .board-table .th-date {
-	width: 130px;
+	width: 110px;
 }
 
 .board-table th, .board-table td {
@@ -591,3 +591,7 @@ i.icon.ion-ios-home {
     margin-right: 10px;
 }
     
+    
+td.leftTd {
+    text-align: left !important;
+}

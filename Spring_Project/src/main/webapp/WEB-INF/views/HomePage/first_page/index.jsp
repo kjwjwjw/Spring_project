@@ -276,8 +276,6 @@
 			</div>
 			<div class="content">
 				<div class="inner">
-					<h1>TRUST</h1>
-					<p>decoro.</p>
 				</div>
 			</div>
 			<nav>

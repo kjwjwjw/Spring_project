@@ -38,7 +38,7 @@ ul, li {
 input, textarea, label {
 	display: block;
 	outline: none;
-/* 	border: none; */
+	border: none;
 }
 
 /*---------------------------------------------*/
@@ -334,7 +334,7 @@ iframe {border: none;}
 .p-t-72, .p-tb-72, .p-all-72 {padding-top: 72px;}
 .p-t-73, .p-tb-73, .p-all-73 {padding-top: 73px;}
 .p-t-74, .p-tb-74, .p-all-74 {padding-top: 74px;}
-.p-t-75, .p-tb-75, .p-all-75 {padding-top: 75px;}
+.p-t-75, .p-tb-75, .p-all-75 {padding-top: 64px;} /* footer 패딩 */
 .p-t-76, .p-tb-76, .p-all-76 {padding-top: 76px;}
 .p-t-77, .p-tb-77, .p-all-77 {padding-top: 77px;}
 .p-t-78, .p-tb-78, .p-all-78 {padding-top: 78px;}
@@ -3714,4 +3714,60 @@ iframe {border: none;}
 
 .buyListImg {
    width: 100px;
+}
+
+/*------sell------*/
+.bor10.m-t-50.p-t-43.p-b-40 {
+    margin: 0 auto;
+}
+
+div#reviews, div#information, div #description{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.sell_box {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.marginEye {
+    margin-left: 200px;
+}
+
+a.sell_listBrand {
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    height: 17px;
+    line-height: 17px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-overflow: ellipsis;
+    border-bottom: 1px solid #222;
+    margin-top: 4px;
+    margin-bottom: 80px;
+}
+
+
+a.sell_listTile {
+    overflow: hidden;
+    height: 17px;
+    line-height: 17px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    text-overflow: ellipsis;
+    color: #717fe0;
+}
+
+input.sell_num {
+    color: white;
+}
+
+.bread-crumb.flex-w.p-l-25.p-r-15.p-t-30.p-lr-0-lg {
+    margin-bottom: 47px;
 }
