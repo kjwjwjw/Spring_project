@@ -2,6 +2,8 @@ package com.itwillbs.spring_project.controller;
 
 
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
-	@RequestMapping(value = "/JoinPro.ma", method = RequestMethod.POST)
+	@RequestMapping(value = "/Join", method = RequestMethod.POST)
 	public String checkEmail(HttpServletRequest request, String join_nickname, String join_id, String join_passwd, String join_email1, String join_email2, String join_gender, String join_age, String[] join_style, String[] join_brand, String[] join_category, Model model) {
 		
 		String val = "";
@@ -84,7 +86,34 @@ public class MemberController {
 	public String login(String login_id, String login_passwd, HttpSession session, Model model) {
 		
 		
-		return "";
+		MyMessageDigest mmd = new MyMessageDigest("SHA-256", login_passwd);
+		String result = mmd.getHashedData();
+		String url = "";
+		
+		// 해당 아이디와 패스워드가 일치하는 정보의 nickname 과 code 가져올 isLogin() 메서드
+		Map<String, String> isLogin = service.isLogin(login_id, result);
+		if(isLogin != null) {
+			if(isLogin.get("level").equals("Admin")) {
+				session.setAttribute("code", isLogin.get("code"));
+				session.setAttribute("nickname", isLogin.get("nickname"));
+				url = "redirect:/Management";
+			} else if(isLogin.get("status").equals("정상")) {
+				session.setAttribute("code", isLogin.get("code"));
+				session.setAttribute("nickname", isLogin.get("nickname"));
+				url = "redirect:/Main";
+			} else if(isLogin.get("status").equals("정지")) {
+				model.addAttribute("login_date", isLogin.get("login_date"));
+				model.addAttribute("reason", isLogin.get("reason"));
+				url = "HomePage/guide_page/suspension";
+			} else if(isLogin.get("status").equals("탈퇴")) {
+				url = "redirect:HomePage/guide_page/withdrawal";
+			}
+		} else {
+			model.addAttribute("msg", "로그인 실패");
+			url = "HomePage/error_page/error";
+		}
+		
+		return url;
 	}
 	
 	@RequestMapping(value = "Logout", method = RequestMethod.GET)
