@@ -118,12 +118,28 @@ public class MemberController {
 	
 	@RequestMapping(value = "Logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
-		return "";
+		session.invalidate();
+		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "findId", method = RequestMethod.GET)
 	public String findId(String find_id_nickname, String find_id_email, Model model) {
 		
+			System.out.println(find_id_nickname);
+			System.out.println(find_id_email);
+			
+			// nickname과 email이 일치하는 아이디 가져오기 service.isFindId(find_id_nickname, find_id_email)
+			String id = "";
+			
+//			if(id == null) {
+//				model.addAttribute("msg", "일치하는 아이디가 없습니다!");
+//				return "HomePage/error_page/error";
+//			} else {
+//				model.addAttribute("id", id);
+//				return "";
+//			}
+			
+			model.addAttribute("id", id);
 		return "";
 	}
 }
