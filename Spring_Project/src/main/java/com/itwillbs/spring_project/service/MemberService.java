@@ -20,12 +20,11 @@ public class MemberService {
 		return false;
 	}
 
-	public Map<String, String> isLogin(String id, String passwd) {
-		return mapper.isLogin(id, passwd);
+	public Map<String, String> isLogin(String login_id, String login_passwd) {
+		return mapper.isLogin(login_id, login_passwd);
 	}
 
 	public int joinMember(MemberVO memberVO) {
-	
 		return mapper.insertMember(memberVO);
 	}
 	

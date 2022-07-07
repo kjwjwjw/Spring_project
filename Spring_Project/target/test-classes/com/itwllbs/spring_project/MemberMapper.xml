@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.itwillbs.spring_project.mapper.MemberMapper">
-	<select id="insertMember" resultType="map">
+	<insert id="insertMember">
        INSERT INTO member
    	   VALUES  (#{SELECT A.NUM FROM (SELECT IFNULL(MAX(CAST(member_num AS UNSIGNED)), 0) + 1 AS num FROM member) A},
        			#{REPLACE(UUID(),'-','')}, #{Member_nickname},#{Member_id},#{Member_passwd},#{Member_email})
        INSERT INTO 
        member_info (member_info_code,member_info_gender, member_info_age)
-       VALUES (#{((SELECT member_code FROM member ORDER BY CAST(member_num AS SIGNED) DESC LIMIT 1)}, #{Member_info_gender()} , #{Member_info_age()})
+       VALUES (#{((SELECT member_code FROM member ORDER BY CAST(member_num AS SIGNED) DESC LIMIT 1)}, #{Member_info_gender} , #{Member_info_age})
        INSERT INTO 
        member_info_detail (member_info_detail_code,member_info_detail_like_style, member_info_detail_like_brand, member_info_detail_like_category, member_info_detail_point, member_info_detail_acc_money) 
-       VALUES (#{((SELECT member_code FROM member ORDER BY CAST(member_num AS SIGNED) DESC LIMIT 1)}, #{Member_info_detail_like_style()}, #{Member_info_detail_like_brand()}, #{Member_info_detail_like_category()} ,0,0 )
-     </select>
+       VALUES (#{((SELECT member_code FROM member ORDER BY CAST(member_num AS SIGNED) DESC LIMIT 1)}, #{Member_info_detail_like_style}, #{Member_info_detail_like_brand}, #{Member_info_detail_like_category} ,0,0 )
+     </insert>
      
      <select id="isLogin" resultType="map">
         SELECT a.code AS code, a.nickname AS nickname, e.level AS level, c.status AS status, c.login_date AS login_date, d.content AS reason
@@ -32,6 +32,9 @@
 		 	AND a.passwd=#{passwd}
 		 </if>
     </select>
+    
+    
+    
      
      
 </mapper>

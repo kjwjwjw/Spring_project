@@ -49,22 +49,19 @@ public class MemberController {
 		}
 		
 		//비밀번호 암호화
-		String algorithm = "SHA-256";
-		
-		String strPlainText = request.getParameter("join_member_passwd"); // 평문 암호
-		
-		
-		// MyMessageDigest 객체 생성 시 생성자에 암호알고리즘명과 평문암호 전달하여 암호화 수행
-		MyMessageDigest mmd = new MyMessageDigest(algorithm, strPlainText);
-		
-		String result = mmd.getHashedData();
-		
+			
 		MemberVO memberVO = new MemberVO();
-		memberVO.setMember_passwd(result);
+		memberVO.setMember_nickname(join_nickname);
+		memberVO.setMember_id(join_id);
+		memberVO.setMember_passwd(join_passwd);
+		memberVO.setMember_info_gender(join_gender);
+		memberVO.setMember_info_age(join_gender);
+		memberVO.setMember_info_age(join_age);
 		memberVO.setMember_email(email);
 		memberVO.setMember_info_detail_like_style(val);
 		memberVO.setMember_info_detail_like_style(bnd);
 		memberVO.setMember_info_detail_like_style(ctgy);
+	
 		
 		// MyMessageDigest 객체의 getHashedData() 메서드를 호출하여 암호화 된 암호문을 리턴받아 출력
 		
@@ -76,22 +73,19 @@ public class MemberController {
 			
 		} else {
 			System.out.println("가입 성공");
-			return "redirect:/";
+			return "redirect:/HomePage/first_page/index";
 			
 		}
 		
 	}
 	
-	@RequestMapping(value = "Login", method = RequestMethod.POST)
+	@RequestMapping(value = "/Login", method = RequestMethod.POST)
 	public String login(String login_id, String login_passwd, HttpSession session, Model model) {
 		
-		
-		MyMessageDigest mmd = new MyMessageDigest("SHA-256", login_passwd);
-		String result = mmd.getHashedData();
 		String url = "";
 		
 		// 해당 아이디와 패스워드가 일치하는 정보의 nickname 과 code 가져올 isLogin() 메서드
-		Map<String, String> isLogin = service.isLogin(login_id, result);
+		Map<String, String> isLogin = service.isLogin(login_id, login_passwd);
 		if(isLogin != null) {
 			if(isLogin.get("level").equals("Admin")) {
 				session.setAttribute("code", isLogin.get("code"));
