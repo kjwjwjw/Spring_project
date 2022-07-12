@@ -24,7 +24,7 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
-	@RequestMapping(value = "/Join", method = RequestMethod.POST)
+	@RequestMapping(value = "Join", method = RequestMethod.POST)
 	public String checkEmail(HttpServletRequest request, String join_nickname, String join_id, String join_passwd, String join_email1, String join_email2, String join_gender, String join_age, String[] join_style, String[] join_brand, String[] join_category, Model model) {
 		String like_style = "";
 		String like_brand = "";
@@ -82,7 +82,7 @@ public class MemberController {
 		return "";
 	}
 	
-	@RequestMapping(value = "/Login", method = RequestMethod.POST)
+	@RequestMapping(value = "Login", method = RequestMethod.POST)
 	public String login(String login_id, String login_passwd, HttpSession session, Model model) {
 		
 		// 암호화 방식은 SHA-256으로 고정이기 때문에 값을 그냥 넣었습니다.

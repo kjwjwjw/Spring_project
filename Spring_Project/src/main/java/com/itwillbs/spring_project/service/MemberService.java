@@ -24,8 +24,5 @@ public class MemberService {
 		return mapper.isLogin(login_id, login_passwd);
 	}
 
-	public int joinMember(MemberVO memberVO) {
-		return mapper.insertMember(memberVO);
-	}
 	
 }
